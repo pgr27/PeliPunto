@@ -1,0 +1,90 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* evitar scroll horizontal */
+  background-color: #2e1a1a; /* fondo oscuro general */
+  color: #eee;
+  font-family: Arial, sans-serif; /* o tu fuente preferida */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.titulo-peli-punto {
+  font-family: 'Emilys Candy', cursive;
+  font-size: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff; /* color claro para que contraste con fondo oscuro */
+}
+
+/* NUEVOS ESTILOS AÑADIDOS */
+
+.app-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente */
+  min-height: 100vh;   /* ocupa toda la altura de la ventana */
+  width: 100vw;        /* ocupa toda la anchura de la ventana */
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.app-icono {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+/* Contenedor de toda la parte central para limitar ancho y centrar */
+.app-contenido {
+  width: 100%;
+  max-width: 900px;  /* ancho máximo para pantallas grandes */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra contenido */
+  gap: 1.5rem;
+}
+.lista-peliculas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra las fichas */
+  gap: 1rem;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
