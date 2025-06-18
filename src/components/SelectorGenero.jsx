@@ -3,7 +3,7 @@ function SelectorGenero({ textoGenero, cambiarTextoGenero }) {
     <select
       value={textoGenero}
       onChange={(e) => cambiarTextoGenero(e.target.value)}
-      className="buscador-peliculas"
+      className="selector-buscadores"
     >
       <option value="">Todos los géneros</option>
       <option value="28">Acción</option>

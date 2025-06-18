@@ -73,10 +73,16 @@ export default function App() {
 
   return (
     <>
+      <img
+        src="/public/PeliPuntoIcon.png"
+        alt="Logo PeliPunto"
+        className="logo"
+      />
       <header className="top-bar">
         <h1 className="titulo-peli-punto">
           {vista === "buscar" ? "🎬 PeliPunto" : "⭐Mis favoritos"}
         </h1>
+
         <div className="botones-top-bar">
           {vista === "buscar" ? (
             <BotonFav setVista={setVista} />

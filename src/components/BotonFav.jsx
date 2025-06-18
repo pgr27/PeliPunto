@@ -1,6 +1,9 @@
 export default function BotonFavoritos({ setVista }) {
   return (
-    <button className="buttonFavoritos" onClick={() => setVista("favoritos")}>
+    <button
+      className="buttonApp buttonFavoritos"
+      onClick={() => setVista("favoritos")}
+    >
       ⭐ Mis Favoritos
     </button>
   );
