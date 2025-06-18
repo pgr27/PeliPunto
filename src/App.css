@@ -1,45 +1,10 @@
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden; /* evitar scroll horizontal */
-  background-color: #2e1a1a; /* fondo oscuro general */
-  color: #eee;
-  font-family: Arial, sans-serif; /* o tu fuente preferida */
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-.titulo-peli-punto {
-  font-family: 'Emilys Candy', cursive;
-  font-size: 48px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  color: #ffffff; /* color claro para que contraste con fondo oscuro */
-}
-
-/* NUEVOS ESTILOS AÑADIDOS */
-
 .app-contenedor {
+  margin-top: 65px; /* Ajusta la distancia del buscador */
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra horizontalmente */
-  min-height: 100vh;   /* ocupa toda la altura de la ventana */
-  width: 100vw;        /* ocupa toda la anchura de la ventana */
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
   padding: 1rem;
 }
@@ -49,27 +14,122 @@ html, body, #root {
   height: 300px;
   margin-bottom: 1rem;
 }
-/* Contenedor de toda la parte central para limitar ancho y centrar */
+
 .app-contenido {
   width: 100%;
-  max-width: 900px;  /* ancho máximo para pantallas grandes */
+  max-width: 900px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra contenido */
+  align-items: center;
   gap: 1.5rem;
+}
+.ficha-pelicula{
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  max-width: 400px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 .lista-peliculas {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra las fichas */
+  align-items: center;
   gap: 1rem;
 }
 
+.titulo-peli-punto {
+  font-size: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.bannerLateral {
+  font-size: 1rem + 0.5vw;
+  position: fixed;
+  top: 15%;
+  width: 350px;
+  height: 65vh;
+  background-color: #8C111B;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding:0.2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.estiloImagenBanner {
+  max-width: 100%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px; /* Espacio entre imagen y el fondo */
+}
+
+.top-bar {
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:35px;
+  padding: 1rem;
+  background-color: #8C111B; /* Color oscuro para contraste */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espacia elementos */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para efecto visual */
+  z-index: 1000; /* Asegura que esté sobre otros elementos */
+}
+.botones-top-bar {
+  display: flex;  
+  margin-right: 150px;
+  justify-content: flex-end; 
+  flex-grow: 1; /* Permite que ocupen espacio correctamente */
+  color: white;
+}
+
+.selector-buscadores{
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  align-self: center;
+
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
+  
   to {
     transform: rotate(360deg);
   }
@@ -79,12 +139,4 @@ html, body, #root {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

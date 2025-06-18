@@ -5,13 +5,7 @@ function PeliBuscador({ textoBusqueda, cambiarTextoBusqueda }) {
       value={textoBusqueda}
       onChange={(e) => cambiarTextoBusqueda(e.target.value)}
       placeholder="Buscar películas..."
-      style={{
-        padding: '0.5rem',
-        width: '100%',
-        maxWidth: '400px',
-        marginBottom: '1rem',
-        fontSize: '16px',
-      }}
+      className="buscador-peliculas"
     />
   );
 }

@@ -3,13 +3,7 @@ function SelectorGenero({ textoGenero, cambiarTextoGenero }) {
     <select
       value={textoGenero}
       onChange={(e) => cambiarTextoGenero(e.target.value)}
-      style={{
-        padding: "0.5rem",
-        width: "100%",
-        maxWidth: "400px",
-        marginBottom: "1rem",
-        fontSize: "16px",
-      }}
+      className="buscador-peliculas"
     >
       <option value="">Todos los géneros</option>
       <option value="28">Acción</option>

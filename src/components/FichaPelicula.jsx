@@ -9,18 +9,7 @@ function FichaPelicula({ pelicula }) {
     : "https://via.placeholder.com/300x450?text=Sin+imagen";
 
   return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        padding: "1rem",
-        marginBottom: "1rem",
-        borderRadius: "8px",
-        maxWidth: "400px",
-        display: "flex",
-        gap: "1rem",
-        alignItems: "flex-start",
-      }}
-    >
+    <div className="ficha-pelicula">
       <img
         src={imagenUrl}
         alt={`Póster de ${pelicula.title}`}

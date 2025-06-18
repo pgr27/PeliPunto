@@ -4,6 +4,8 @@ import SelectorGenero from "./components/SelectorGenero";
 import SelectorOrden from "./components/SelectorOrden";
 import FichaPelicula from "./components/FichaPelicula";
 import BannerLateral from "./components/BannerLateral";
+import BotonFav from "./components/BotonFav";
+import BotonVolverBuscar from "./components/BotonVolverBuscar";
 import Fav from "./pages/Fav";
 import "./App.css";
 
@@ -73,21 +75,17 @@ export default function App() {
     <>
       <header className="top-bar">
         <h1 className="titulo-peli-punto">
-          {vista === "buscar" ? "🎬 PeliPunto" : "– Favoritos –"}
+          {vista === "buscar" ? "🎬 PeliPunto" : "⭐Mis favoritos"}
         </h1>
-        {vista === "buscar" ? (
-          <button
-            className="buttonFavoritos"
-            onClick={() => setVista("favoritos")}
-          >
-            ⭐ Mis Favoritos
-          </button>
-        ) : (
-          <button className="volver-buscar" onClick={() => setVista("buscar")}>
-            🔍 Volver a buscar
-          </button>
-        )}
+        <div className="botones-top-bar">
+          {vista === "buscar" ? (
+            <BotonFav setVista={setVista} />
+          ) : (
+            <BotonVolverBuscar setVista={setVista} />
+          )}
+        </div>
       </header>
+
       <div className="main-content">
         {vista === "buscar" && (
           <BannerLateral peliculas={pelisAleatorias} lado="izquierdo" />

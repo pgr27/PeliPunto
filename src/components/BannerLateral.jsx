@@ -26,7 +26,7 @@ function BannerLateral({ peliculas = [], lado }) {
       <img
         src={`https://image.tmdb.org/t/p/w500${peliculas[indiceActual].poster_path}`}
         alt={peliculas[indiceActual].title}
-        className="estiloImagenBannerLateral"
+        className="estiloImagenBanner"
       />
     </div>
   );

@@ -17,21 +17,12 @@ export default function Fav({ setVista }) {
 
   return (
     <section>
-      <h1 className="titulo-peli-punto">- Mis Favoritos -</h1>
+      <h1 className="titulo-peli-punto"> ¡Épicas! 🔥</h1>
       <div className="lista-peliculas">
         {favoritos.map((pelicula) => (
           <FichaPelicula key={pelicula.id} pelicula={pelicula} />
         ))}
       </div>
-      <button
-        className="volver-buscar"
-        onClick={() => {
-          console.log("Cambiando vista a buscar...");
-          setVista("buscar");
-        }}
-      >
-        🔍 Volver a Buscar
-      </button>
     </section>
   );
 }

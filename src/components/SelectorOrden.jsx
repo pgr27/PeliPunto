@@ -3,13 +3,7 @@ function SelectorOrden({ textoOrden, cambiarTextoOrden }) {
     <select
       value={textoOrden}
       onChange={(e) => cambiarTextoOrden(e.target.value)}
-      style={{
-        padding: "0.5rem",
-        width: "100%",
-        maxWidth: "400px",
-        marginBottom: "1rem",
-        fontSize: "16px",
-      }}
+      className="buscador-peliculas"
     >
       <option value="">Ordenar por...</option>
       <option value="popular">Más populares</option>
