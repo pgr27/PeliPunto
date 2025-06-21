@@ -16,11 +16,11 @@ function BannerLateral({ peliculas = [], lado }) {
   useEffect(() => {
     async function cargarTrailer() {
       if (!peliculas || peliculas.length === 0 || !peliculas[indiceActual])
-        return; // ✅ Verifica que la película existe
+        return; // Verifica que la película existe
 
       console.log("Obteniendo tráiler de:", peliculas[indiceActual].title);
 
-      let url = null; // ✅ Inicializa la variable antes de usarla
+      let url = null; // Inicializa la variable antes de usarla
 
       try {
         url = await obtenerTrailer(peliculas[indiceActual].id);

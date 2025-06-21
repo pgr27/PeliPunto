@@ -90,7 +90,34 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px; /* Espacio entre imagen y el fondo */
 }
-
+.logo-maraton {
+  max-width: 60px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+.texto-maratones {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+.botones-maratones {
+  margin: 8px;
+  padding: 10px 16px;
+  background-color: #242424;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.botones-maratones:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  background-color: #333;
+}
 .top-bar {
   position: fixed; /* Fija la barra en la parte superior */
   top: 0;
@@ -106,31 +133,45 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para efecto visual */
   z-index: 1000; /* Asegura que esté sobre otros elementos */
 }
-.botones-top-bar {
-  display: flex;  
-  margin-right: 150px;
-  justify-content: flex-end; 
-  flex-grow: 1; /* Permite que ocupen espacio correctamente */
-  color: white;
+.contenedor-botones-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-right: 2rem;
 }
-.buttonApp {
+.botones-genericos{
   padding: 10px;
+  margin-right: 16px;
+  background-color: #242424;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.buttonFavoritos, .volver-buscar{
-  background-color: #ffffff;
+.botones-genericos:hover{
+   transform: scale(1.05);
+   box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+   background-color: #333;
 }
-.selector-buscadores{
-  padding: 0.5rem;
-  border-radius: 2px;
-  border-color: #ffffff;
-  color: #ffffff;
-  background-color: #2e1a1a;
+.selector-buscadores {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: #242424;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 300px;
   margin-bottom: 1rem;
-  font-size: 16px;
-  align-self: center;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
+}
+.selector-buscadores:hover {
+  background-color: #333;
 }
 @keyframes logo-spin {
   from {

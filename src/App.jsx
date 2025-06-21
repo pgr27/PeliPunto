@@ -7,6 +7,9 @@ import BannerLateral from "./components/BannerLateral";
 import BotonFav from "./components/BotonFav";
 import BotonVolverBuscar from "./components/BotonVolverBuscar";
 import Fav from "./pages/Fav";
+import Maratones from "./pages/Maratones";
+import MaratonGenero from "./components/MaratonGenero";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 
 function obtenerPeliculasAleatorias(peliculas, cantidad) {
@@ -73,19 +76,25 @@ export default function App() {
 
   return (
     <>
-      <img
-        src="/public/PeliPuntoIcon.png"
-        alt="Logo PeliPunto"
-        className="logo"
-      />
+      <div className="banner-maraton">
+        <div
+          className="mejores-maratones"
+          onClick={() => setVista("maratones")}
+        >
+          <img src="/PeliPuntoIcon.png" alt="Logo PeliPunto" className="logo" />
+          <span className="texto-maratones">🎞️🧣 Mejores Maratones</span>
+        </div>
+      </div>
       <header className="top-bar">
         <h1 className="titulo-peli-punto">
           {vista === "buscar" ? "🎬 PeliPunto" : "⭐Mis favoritos"}
         </h1>
 
-        <div className="botones-top-bar">
+        <div className="contenedor-botones-top">
           {vista === "buscar" ? (
-            <BotonFav setVista={setVista} />
+            <>
+              <BotonFav setVista={setVista} />
+            </>
           ) : (
             <BotonVolverBuscar setVista={setVista} />
           )}
@@ -93,11 +102,11 @@ export default function App() {
       </header>
 
       <div className="main-content">
-        {vista === "buscar" && (
+        {(vista === "buscar" || vista === "maratones") && (
           <BannerLateral peliculas={pelisAleatorias} lado="izquierdo" />
         )}
         <main className="app-contenedor">
-          {vista === "buscar" ? (
+          {vista === "buscar" && (
             <>
               <PeliBuscador
                 textoBusqueda={textoBusqueda}
@@ -117,11 +126,15 @@ export default function App() {
                 ))}
               </div>
             </>
-          ) : (
-            <Fav setVista={setVista} />
           )}
+
+          {vista === "favoritos" && <Fav setVista={setVista} />}
+          {vista === "maratones" && <Maratones />}
         </main>
       </div>
+      <Routes>
+        <Route path="/maraton/:genero" element={<MaratonGenero />} />
+      </Routes>
     </>
   );
 }
