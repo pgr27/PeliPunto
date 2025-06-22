@@ -24,7 +24,10 @@ function FichaPelicula({ pelicula }) {
             : "Desconocido"}
         </p>
         <p>{pelicula.overview || "Sin descripción disponible."}</p>
-        <button onClick={() => alternarFavorito(pelicula)}>
+        <button
+          className="botones-genericos"
+          onClick={() => alternarFavorito(pelicula)}
+        >
           {esFavorita ? "❤️ Quitar de favoritos" : "🤍 Añadir a favoritos"}
         </button>
       </div>

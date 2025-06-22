@@ -55,6 +55,8 @@ export async function obtenerPeliculasPorGenero(nombreGenero) {
       `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${idGenero}&language=es-ES&sort_by=popularity.desc`
     );
     const data = await response.json();
+        console.log("Películas obtenidas en ObtenerPeliculasPorGenero:", data.results);
+
     return data.results || [];
   } catch (error) {
     console.error("Error obteniendo películas por género:", error);

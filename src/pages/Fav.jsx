@@ -1,23 +1,24 @@
 import { useFav } from "../context/FavProvider";
 import FichaPelicula from "../components/FichaPelicula";
+import { Link } from "react-router-dom";
 
-export default function Fav({ setVista }) {
+export default function Fav() {
   const { favoritos } = useFav();
 
   if (favoritos.length === 0) {
     return (
-      <div className="favoritos-contenedor">
+      <div>
         <p className="mensaje-favoritos">No tienes películas en favoritos.</p>
-        <button className="volver-buscar" onClick={() => setVista("buscar")}>
+        <Link to="/" className="volver-buscar">
           🔍 Volver a Buscar
-        </button>
+        </Link>
       </div>
     );
   }
 
   return (
     <section>
-      <h1 className="titulo-peli-punto"> ¡Épicas! 🔥</h1>
+      <h1 className="titulo-peli-punto">¡Épicas! 🔥</h1>
       <div className="lista-peliculas">
         {favoritos.map((pelicula) => (
           <FichaPelicula key={pelicula.id} pelicula={pelicula} />

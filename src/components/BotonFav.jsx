@@ -1,7 +1,9 @@
-export default function BotonFavoritos({ setVista }) {
+import { Link } from "react-router-dom";
+
+export default function BotonFavoritos() {
   return (
-    <button className="botones-genericos" onClick={() => setVista("favoritos")}>
+    <Link to="/favoritos" className="botones-genericos">
       ⭐ Mis Favoritos
-    </button>
+    </Link>
   );
 }

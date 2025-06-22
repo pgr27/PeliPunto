@@ -49,7 +49,10 @@ function BannerLateral({ peliculas = [], lado }) {
     }
   };
   return (
-    <div className={`bannerLateral ${lado}`} onClick={manejarClic}>
+    <div
+      className={`bloque-lateral bannerLateral ${lado}`}
+      onClick={manejarClic}
+    >
       <div className={"estiloTituloBanner"}>🎥 Películas de la Semana</div>
       <img
         src={`https://image.tmdb.org/t/p/w500${peliculas[indiceActual].poster_path}`}

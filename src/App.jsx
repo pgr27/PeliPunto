@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  Link,
+} from "react-router-dom";
 import PeliBuscador from "./components/PeliBuscador";
 import SelectorGenero from "./components/SelectorGenero";
 import SelectorOrden from "./components/SelectorOrden";
 import FichaPelicula from "./components/FichaPelicula";
 import BannerLateral from "./components/BannerLateral";
 import BotonFav from "./components/BotonFav";
-import BotonVolverBuscar from "./components/BotonVolverBuscar";
 import Fav from "./pages/Fav";
 import Maratones from "./pages/Maratones";
 import MaratonGenero from "./components/MaratonGenero";
-import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 
 function obtenerPeliculasAleatorias(peliculas, cantidad) {
@@ -18,12 +23,13 @@ function obtenerPeliculasAleatorias(peliculas, cantidad) {
 }
 
 export default function App() {
-  const [vista, setVista] = useState("buscar");
   const [textoBusqueda, cambiarTextoBusqueda] = useState("batman");
   const [textoGenero, cambiarTextoGenero] = useState("");
   const [textoOrden, cambiarTextoOrden] = useState("");
   const [listaPeliculas, establecerListaPeliculas] = useState([]);
   const [peliculasParaBanner, setPeliculasParaBanner] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     async function cargarPopulares() {
@@ -76,65 +82,64 @@ export default function App() {
 
   return (
     <>
-      <div className="banner-maraton">
-        <div
-          className="mejores-maratones"
-          onClick={() => setVista("maratones")}
-        >
-          <img src="/PeliPuntoIcon.png" alt="Logo PeliPunto" className="logo" />
+      <div>
+        <div onClick={() => navigate("/maratones")} className="bloque-lateral">
           <span className="texto-maratones">🎞️🧣 Mejores Maratones</span>
+
+          <img
+            src="/PeliPuntoIcon.png"
+            alt="Logo PeliPunto"
+            className="estiloImagenBanner"
+          />
+          <span className="texto-maratones">🖱️ Pulsa para</span>
         </div>
       </div>
-      <header className="top-bar">
-        <h1 className="titulo-peli-punto">
-          {vista === "buscar" ? "🎬 PeliPunto" : "⭐Mis favoritos"}
-        </h1>
 
+      <header className="top-bar">
+        <h1 className="titulo-peli-punto">🎬 PeliPunto</h1>
         <div className="contenedor-botones-top">
-          {vista === "buscar" ? (
-            <>
-              <BotonFav setVista={setVista} />
-            </>
-          ) : (
-            <BotonVolverBuscar setVista={setVista} />
+          {location.pathname === "/" && <BotonFav />}
+          {location.pathname !== "/" && (
+            <Link to="/" className="botones-genericos">
+              🔍 Volver a Buscar
+            </Link>
           )}
         </div>
       </header>
 
       <div className="main-content">
-        {(vista === "buscar" || vista === "maratones") && (
-          <BannerLateral peliculas={pelisAleatorias} lado="izquierdo" />
-        )}
+        <BannerLateral peliculas={pelisAleatorias} lado="izquierdo" />
         <main className="app-contenedor">
-          {vista === "buscar" && (
-            <>
-              <PeliBuscador
-                textoBusqueda={textoBusqueda}
-                cambiarTextoBusqueda={cambiarTextoBusqueda}
-              />
-              <SelectorGenero
-                textoGenero={textoGenero}
-                cambiarTextoGenero={cambiarTextoGenero}
-              />
-              <SelectorOrden
-                textoOrden={textoOrden}
-                cambiarTextoOrden={cambiarTextoOrden}
-              />
-              <div className="lista-peliculas">
-                {listaPeliculas.map((pelicula) => (
-                  <FichaPelicula key={pelicula.id} pelicula={pelicula} />
-                ))}
-              </div>
-            </>
-          )}
-
-          {vista === "favoritos" && <Fav setVista={setVista} />}
-          {vista === "maratones" && <Maratones />}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <PeliBuscador
+                    textoBusqueda={textoBusqueda}
+                    cambiarTextoBusqueda={cambiarTextoBusqueda}
+                  />
+                  <SelectorGenero
+                    textoGenero={textoGenero}
+                    cambiarTextoGenero={cambiarTextoGenero}
+                  />
+                  <SelectorOrden
+                    textoOrden={textoOrden}
+                    cambiarTextoOrden={cambiarTextoOrden}
+                  />
+                  <div className="lista-peliculas">
+                    {listaPeliculas.map((pelicula) => (
+                      <FichaPelicula key={pelicula.id} pelicula={pelicula} />
+                    ))}
+                  </div>
+                </>
+              }
+            />
+            <Route path="/favoritos" element={<Fav />} />
+            <Route path="/maratones" element={<Maratones />} />
+          </Routes>
         </main>
       </div>
-      <Routes>
-        <Route path="/maraton/:genero" element={<MaratonGenero />} />
-      </Routes>
     </>
   );
 }
