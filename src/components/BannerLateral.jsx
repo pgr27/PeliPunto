@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { obtenerTrailer } from "../tmdbService";
+import { Link } from "react-router-dom";
 
 function BannerLateral({ peliculas = [], lado }) {
   const [indiceActual, setIndiceActual] = useState(0);

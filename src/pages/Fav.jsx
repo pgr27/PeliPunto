@@ -9,8 +9,8 @@ export default function Fav() {
     return (
       <div>
         <p className="mensaje-favoritos">No tienes películas en favoritos.</p>
-        <Link to="/" className="volver-buscar">
-          🔍 Volver a Buscar
+        <Link to="/" className="botones-genericos">
+          🡰 Pagina Principal
         </Link>
       </div>
     );

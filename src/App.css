@@ -1,10 +1,23 @@
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+h1, h2 {
+  font-size: clamp(1.4rem, 6vw, 2.5rem);
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  margin-inline: 1rem;
+}
 .app-contenedor {
-  margin-top: 65px; /* Ajusta la distancia del buscador */
+  margin-top: 70px; /* Ajusta la distancia del buscador */
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
+  background-color: #260101;
   box-sizing: border-box;
   padding: 1rem;
 }
@@ -37,12 +50,13 @@
 }
 
 .titulo-peli-punto {
-  font-size: 48px;
+  font-size: 36px;
+  line-height: 1.1;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: #ffffff;
 }
 .bloque-lateral {
@@ -72,12 +86,16 @@
   font-size: calc(1rem + 0.5vw);
 }
 .estiloImagenBanner {
-  max-width: 100%;
-  height: 90%;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   object-fit: contain;
   border-radius: 9px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px; /* Espacio entre imagen y el fondo */
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .texto-maratones {
@@ -90,39 +108,48 @@
   top: 0;
   left: 0;
   width: 100%;
-  height:35px;
+  height:60px;
   padding: 1rem;
+  z-index: 999;
   background-color: #8C111B; /* Color oscuro para contraste */
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between; /* Espacia elementos */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para efecto visual */
-  z-index: 1000; /* Asegura que esté sobre otros elementos */
 }
 .contenedor-botones-top {
+  flex-wrap: wrap;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
   margin-right: 2rem;
+  max-width: 90vw;
+  white-space: normal;
+  text-align: center;
 }
-.botones-genericos{
-  padding: 10px;
+.botones-genericos {
+  padding: clamp(8px, 2vw, 12px);
   margin-right: 16px;
   background-color: #242424;
   color: white;
-  font-size: 1rem;
-  border: none;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  border: 2px solid white;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 90vw;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: break-word;
 }
-.botones-genericos:hover{
-   transform: scale(1.05);
-   box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-   background-color: #333;
+.botones-genericos:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  background-color: #333;
 }
+
 .selector-buscadores {
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
@@ -140,3 +167,78 @@
 .selector-buscadores:hover {
   background-color: #333;
 }
+.solo-movil {
+  display: none;
+}
+.solo-escritorio {
+  display: block;
+}
+.bloque-lateral {
+  display: block;
+}
+
+.banner-lateral {
+  display: block;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #260101 !important;
+  font-family: Arial, sans-serif;
+  color: #eee ! important;
+  overflow-x: hidden;
+}
+/* ⚠️ Corrige el espacio extra y la prioridad */
+body {
+  background-color: #260101 !important;
+}
+/* ✔️ Refuerzo visual del fondo en móvil estrecho */
+.ficha-pelicula {
+  background-color: #1f1f1f;
+}
+/* ✔️ Añadido si no está ya */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .bloque-lateral {
+    display: none !important;
+  }
+  .banner-lateral {
+    display: none !important;
+  }
+  .solo-movil {
+    display: block;
+  }
+  .solo-escritorio {
+    display: none;
+  }
+  .titulo-peli-punto {
+    font-size: clamp(24px, 5vw, 42px);  
+  }
+  .contenedor-botones-top {
+    gap: 8px;
+    margin-right: 1rem;
+  }
+  .botones-genericos {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .top-bar,
+  .contenedor-botones-top,
+  .titulo-peli-punto {
+    padding-inline: 0.5rem;
+    margin-inline: auto;
+  }
+  .estiloImagenBanner {
+    max-width: 80vw;
+  }
+}
+@media (min-width: 801px) {
+  .dropdown {
+    display: none !important;
+  }
+}
+

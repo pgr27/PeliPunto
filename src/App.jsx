@@ -98,12 +98,46 @@ export default function App() {
       <header className="top-bar">
         <h1 className="titulo-peli-punto">🎬 PeliPunto</h1>
         <div className="contenedor-botones-top">
-          {location.pathname === "/" && <BotonFav />}
-          {location.pathname !== "/" && (
-            <Link to="/" className="botones-genericos">
-              🔍 Volver a Buscar
-            </Link>
-          )}
+          {location.pathname === "/" && (
+            <div className="solo-escritorio">
+              <BotonFav />
+            </div>
+          )}{" "}
+          {/* Menú desplegable añadido */}
+          <div className="dropdown">
+            <button
+              className="btn btn-light dropdown-toggle botones-genericos"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Menú
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end">
+              <li className="solo-movil">
+                <Link className="dropdown-item" to="/favoritos">
+                  ⭐ Mis favoritos
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/">
+                  🎬 Películas de la Semana
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/maratones">
+                  🎞️ Maratones
+                </Link>
+              </li>
+              {location.pathname !== "/" && (
+                <li className="solo-movil">
+                  <Link className="dropdown-item" to="/">
+                    🡰 Página Principal
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </header>
 
