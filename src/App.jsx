@@ -10,11 +10,13 @@ import PeliBuscador from "./components/PeliBuscador";
 import SelectorGenero from "./components/SelectorGenero";
 import SelectorOrden from "./components/SelectorOrden";
 import FichaPelicula from "./components/FichaPelicula";
-import BannerLateral from "./components/BannerLateral";
+import BannerLateral from "./components/BannerPeliculasSemana";
 import BotonFav from "./components/BotonFav";
-import Fav from "./pages/Fav";
-import Maratones from "./pages/Maratones";
+import Fav from "./pages/FavPage";
+import Maratones from "./pages/MaratonesPage";
 import MaratonGenero from "./components/MaratonGenero";
+import PeliculasSemanaMovil from "./components/PeliculasSemanaMovil";
+import PeliculasSemanaPage from "./pages/PeliculasSemanaPage";
 import "./App.css";
 
 function obtenerPeliculasAleatorias(peliculas, cantidad) {
@@ -23,7 +25,7 @@ function obtenerPeliculasAleatorias(peliculas, cantidad) {
 }
 
 export default function App() {
-  const [textoBusqueda, cambiarTextoBusqueda] = useState("batman");
+  const [textoBusqueda, cambiarTextoBusqueda] = useState("");
   const [textoGenero, cambiarTextoGenero] = useState("");
   const [textoOrden, cambiarTextoOrden] = useState("");
   const [listaPeliculas, establecerListaPeliculas] = useState([]);
@@ -96,13 +98,23 @@ export default function App() {
       </div>
 
       <header className="top-bar">
-        <h1 className="titulo-peli-punto">🎬 PeliPunto</h1>
+        <Link to="/" className="titulo-peli-punto">
+          <h1>🎬 PeliPunto</h1>
+        </Link>
         <div className="contenedor-botones-top">
           {location.pathname === "/" && (
-            <div className="solo-escritorio">
-              <BotonFav />
-            </div>
-          )}{" "}
+            <Link to="/favoritos" className="botones-genericos solo-escritorio">
+              ⭐ Favoritos
+            </Link>
+          )}
+
+          {location.pathname !== "/" && (
+            <Link to="/" className="botones-genericos solo-escritorio">
+              🡰 Página Principal
+            </Link>
+          )}
+        </div>
+        <div className="dropdown">
           {/* Menú desplegable añadido */}
           <div className="dropdown">
             <button
@@ -120,7 +132,7 @@ export default function App() {
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/peliculas-semana">
                   🎬 Películas de la Semana
                 </Link>
               </li>
@@ -171,6 +183,7 @@ export default function App() {
             />
             <Route path="/favoritos" element={<Fav />} />
             <Route path="/maratones" element={<Maratones />} />
+            <Route path="/peliculas-semana" element={<PeliculasSemanaPage />} />
           </Routes>
         </main>
       </div>
