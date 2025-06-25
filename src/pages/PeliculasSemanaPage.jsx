@@ -19,7 +19,7 @@ function PeliculasSemanaPage() {
   }, []);
 
   return (
-    <div className="app-contenedor">
+    <div className="app-contenedor app-contenedor2">
       <h1 className="titulo-peli-punto">🎬 Películas de la Semana</h1>
 
       {/* Versión escritorio: lista de fichas visuales */}

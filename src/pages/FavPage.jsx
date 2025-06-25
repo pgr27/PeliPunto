@@ -18,7 +18,7 @@ export default function Fav() {
 
   return (
     <section>
-      <h1 className="titulo-peli-punto">¡Épicas! 🔥</h1>
+      <h1>¡Épicas! 🔥</h1>
       <div className="lista-peliculas">
         {favoritos.map((pelicula) => (
           <FichaPelicula key={pelicula.id} pelicula={pelicula} />

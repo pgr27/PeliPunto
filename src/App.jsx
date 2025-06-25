@@ -86,14 +86,13 @@ export default function App() {
     <>
       <div>
         <div onClick={() => navigate("/maratones")} className="bloque-lateral">
-          <span className="texto-maratones">🎞️🧣 Mejores Maratones</span>
-
+          <span className="texto-banners">✨ Mejores Maratones</span>
           <img
             src="/PeliPuntoIcon.png"
             alt="Logo PeliPunto"
             className="estiloImagenBanner"
           />
-          <span className="texto-maratones">🖱️ Pulsa para</span>
+          <span className="texto-banners">🖱️ Aquí</span>
         </div>
       </div>
 
@@ -115,7 +114,7 @@ export default function App() {
           )}
         </div>
         <div className="dropdown">
-          {/* Menú desplegable añadido */}
+          {/* Menú desplegable para movil */}
           <div className="dropdown">
             <button
               className="btn btn-light dropdown-toggle botones-genericos"
@@ -153,9 +152,9 @@ export default function App() {
         </div>
       </header>
 
-      <div className="main-content">
+      <div className="app-contenedor">
         <BannerLateral peliculas={pelisAleatorias} lado="izquierdo" />
-        <main className="app-contenedor">
+        <main className="app-contenedor app-contenedor2">
           <Routes>
             <Route
               path="/"

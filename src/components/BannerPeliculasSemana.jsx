@@ -14,14 +14,15 @@ function BannerLateral({ peliculas = [], lado }) {
     }, 3000);
     return () => clearInterval(intervalo);
   }, [peliculas]);
+
   useEffect(() => {
     async function cargarTrailer() {
       if (!peliculas || peliculas.length === 0 || !peliculas[indiceActual])
-        return; // Verifica que la película existe
+        return;
 
       console.log("Obteniendo tráiler de:", peliculas[indiceActual].title);
 
-      let url = null; // Inicializa la variable antes de usarla
+      let url = null;
 
       try {
         url = await obtenerTrailer(peliculas[indiceActual].id);
@@ -54,7 +55,7 @@ function BannerLateral({ peliculas = [], lado }) {
       className={`bloque-lateral bannerLateral ${lado}`}
       onClick={manejarClic}
     >
-      <div className={"estiloTituloBanner"}>🎥 Películas de la Semana</div>
+      <div className="texto-banners">🎥 Películas de la Semana</div>
       <img
         src={`https://image.tmdb.org/t/p/w500${peliculas[indiceActual].poster_path}`}
         alt={peliculas[indiceActual].title}

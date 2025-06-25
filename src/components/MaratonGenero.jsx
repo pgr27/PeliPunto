@@ -35,7 +35,7 @@ function MaratonGenero({ genero }) {
       </h1>
       <div className="lista-peliculas">
         {peliculas.map((pelicula) => (
-          <div key={pelicula.id} className="ficha-pelicula">
+          <div key={pelicula.id} className="ficha-pelicula ">
             <img
               src={
                 pelicula.poster_path
