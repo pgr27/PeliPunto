@@ -1,0 +1,311 @@
+*, *::before, *::after {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+h1, h2 {
+  font-size: clamp(1.4rem, 6vw, 2.5rem);
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  margin-bottom: 2rem;
+  margin: top 2rem;
+}
+
+.app-contenedor {
+  margin-top: 70px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #260101;
+  box-sizing: border-box;
+  padding: 1rem;
+  padding-right: 10px;
+}
+.app-contenedor2 {
+  margin-top: 50px; 
+}
+.app-contenido {
+  width: 100%;
+  max-width: 900px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.ficha-pelicula{/*revisar display*/
+  margin-inline: auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  max-width: 400px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #1f1f1f;
+
+}
+.lista-peliculas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.titulo-peli-punto {
+  font-size: 36px;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  color: #ffffff;
+   text-decoration: none;
+  color: inherit;
+}
+.texto-banners{
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.peliculas-semana-movil {
+  padding: 1rem;
+}
+.texto-maratones {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+.top-bar {
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  width: 100%;
+  height:60px;
+  padding: 1rem;
+  z-index: 999;
+  background-color: #8C111B; /* Color oscuro para contraste */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espacia elementos */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para efecto visual */
+}
+.contenedor-botones-top {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-right: 2rem;
+  max-width: 90vw;
+  white-space: normal;
+  text-align: center;
+}
+.botones-genericos {
+  padding: clamp(8px, 2vw, 12px);
+  margin-right: 16px;
+  background-color: #242424;
+  color: white;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  border: 2px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 90vw;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: break-word;
+  text-decoration: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.botones-genericos:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  background-color: #333;
+}
+
+.selector-buscadores {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: #242424;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
+}
+.selector-buscadores:hover {
+  background-color: #333;
+}
+.solo-movil {
+  display: none;
+}
+.solo-escritorio {
+  display: block;
+}
+
+body {
+  background-color: #260101 !important;
+  overflow-y: scroll ! important;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #260101 !important;
+  font-family: Arial, sans-serif;
+  color: #eee ! important;
+  overflow-x: hidden;
+}
+.dropdown-menu {
+  width: fit-content;
+  min-width: 240px;
+  max-width: 280px;
+  padding: 0.4rem 0;
+  border-radius: 8px;
+}
+.dropdown-item {
+  white-space: normal ! important;
+  padding: 8px 16px;
+  word-break: break-word; /*Salto de linea*/
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: left;
+}
+.carrusel-contenedor {
+  margin-bottom: 2rem;
+  padding: 1rem 0.5rem;
+  background-color: #111;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.carrusel-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1rem; /* separación entre los pósters */
+  padding: 0.5rem 0;
+}
+.carrusel-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.carrusel-scroll::-webkit-scrollbar-thumb {
+  margin-top:15px;
+  background-color: #666;
+  border-radius: 4px;
+}
+.modal-contenido {
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.modal-cerrar {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.trailer-contenedor {
+  margin-top: 2rem;
+}
+@media (max-width: 1190px) {
+  .solo-movil {
+    display: block;
+  }
+  .solo-escritorio {
+    display: none;
+  } 
+  .contenedor-botones-top {
+    gap: 8px;
+    margin-right: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .botones-genericos {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .top-bar,
+  .contenedor-botones-top,
+  .titulo-peli-punto {
+    padding-inline: 0.5rem;
+    margin-inline: auto;
+  }
+  
+  .titulo-peli-punto {
+    font-size: clamp(24px, 5vw, 42px);  
+    text-decoration: none ! important;
+  }
+  .dropdown-menu {
+    width: 95vw;
+  }
+   .carrusel-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .carrusel-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+  .modal-contenido {
+    width: 90vw;
+    height: 90vh;
+    max-height: none;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .modal-cerrar {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .ficha-pelicula {
+    align-items: center;
+    max-width: fit-content;
+  }
+
+  .ficha-pelicula img {
+    width: 60%;
+    margin-bottom: 1rem;
+  }
+
+  .trailer-contenedor iframe {
+    height: 200px;
+  }
+@media (min-width: 1189px) {
+  .dropdown {
+    display: none !important;
+  }
+  .peliculas-semana-movil {
+    display: none !important;
+  }
+}
+
