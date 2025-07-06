@@ -10,7 +10,6 @@ h1, h2 {
   margin-bottom: 2rem;
   margin: top 2rem;
 }
-
 .app-contenedor {
   margin-top: 70px; 
   display: flex;
@@ -241,7 +240,7 @@ html, body {
   .solo-escritorio {
     display: none;
   } 
-  .contenedor-botones-top {
+ .contenedor-botones-top {
     gap: 8px;
     margin-right: 1rem;
     flex-wrap: wrap;
@@ -257,7 +256,6 @@ html, body {
     padding-inline: 0.5rem;
     margin-inline: auto;
   }
-  
   .titulo-peli-punto {
     font-size: clamp(24px, 5vw, 42px);  
     text-decoration: none ! important;
