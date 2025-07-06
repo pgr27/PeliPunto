@@ -1,4 +1,7 @@
+import React from "react";
+
 function FiltrosPeliculas({
+  tipo, // "peliculas" o "series"
   textoBusqueda,
   cambiarTextoBusqueda,
   textoGenero,
@@ -11,7 +14,7 @@ function FiltrosPeliculas({
       {/* Campo de búsqueda */}
       <div className="col-12 col-md-4">
         <label htmlFor="busqueda" className="form-label">
-          Buscar películas
+          {tipo === "peliculas" ? "Buscar películas" : "Buscar series"}
         </label>
         <input
           type="text"
@@ -19,7 +22,9 @@ function FiltrosPeliculas({
           id="busqueda"
           value={textoBusqueda}
           onChange={(e) => cambiarTextoBusqueda(e.target.value)}
-          placeholder="Ej. El Padrino"
+          placeholder={
+            tipo === "peliculas" ? "Ej. El Padrino" : "Ej. Stranger Things"
+          }
         />
       </div>
 
@@ -40,6 +45,7 @@ function FiltrosPeliculas({
           <option value="18">Drama</option>
           <option value="27">Terror</option>
           <option value="10749">Romance</option>
+          {/* Puedes añadir más géneros específicos para series si lo deseas */}
         </select>
       </div>
 

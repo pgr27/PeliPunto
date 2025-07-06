@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import FiltrosPeliculas from "./components/FiltrosPeliculas";
+import FiltrosPeliculas from "./components/Filtros";
 import FichaPelicula from "./components/FichaPelicula";
 import Fav from "./pages/FavPage";
 import PeliculasPage from "./pages/PeliculasPage";

@@ -1,6 +1,6 @@
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import FichaPelicula from "./FichaPelicula";
+import FichaPelicula from "../components/FichaPelicula";
 import "../App.css";
 
 function ModalFicha({ abierto, onCerrar, contenido, trailerUrl }) {

@@ -7,6 +7,8 @@ import {
 import "../App.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import FichaPelicula from "../components/FichaPelicula";
+
 import ModalFicha from "../components/ModalFicha";
 
 function PeliculasPage() {
