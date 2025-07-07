@@ -1,6 +1,6 @@
 import React from "react";
 
-function FiltrosPeliculas({
+function Filtros({
   tipo, // "peliculas" o "series"
   textoBusqueda,
   cambiarTextoBusqueda,
@@ -10,7 +10,7 @@ function FiltrosPeliculas({
   cambiarTextoOrden,
 }) {
   return (
-    <form className="row g-3 mb-4 align-items-end">
+    <form className="row g-3 mb-4 align-items-end ">
       {/* Campo de búsqueda */}
       <div className="col-12 col-md-4">
         <label htmlFor="busqueda" className="form-label">
@@ -23,7 +23,7 @@ function FiltrosPeliculas({
           value={textoBusqueda}
           onChange={(e) => cambiarTextoBusqueda(e.target.value)}
           placeholder={
-            tipo === "peliculas" ? "Ej. El Padrino" : "Ej. Stranger Things"
+            tipo === "peliculas" ? "Buscar pelicula" : "Ej. Stranger Things"
           }
         />
       </div>
@@ -70,4 +70,4 @@ function FiltrosPeliculas({
   );
 }
 
-export default FiltrosPeliculas;
+export default Filtros;

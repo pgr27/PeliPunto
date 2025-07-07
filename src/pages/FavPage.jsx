@@ -18,11 +18,25 @@ export default function Fav() {
 
   return (
     <section>
-      <h1>¡Épicas! 🔥</h1>
-      <div className="lista-peliculas">
-        {favoritos.map((pelicula) => (
-          <FichaPelicula key={pelicula.id} pelicula={pelicula} />
-        ))}
+      <h1>¡TE HAN ENCANTADO!</h1>
+      <h1>🔥🔥🔥🔥🔥🔥</h1>
+      <div class="grid-contenedor">
+        <div class="grid-item">
+          <h2>Tus películas favoritas</h2>{" "}
+          <div className="lista-peliculas">
+            {favoritos.map((pelicula) => (
+              <FichaPelicula key={pelicula.id} pelicula={pelicula} />
+            ))}
+          </div>
+        </div>
+        <div class="grid-item">
+          <h2>Tus series favoritas</h2>{" "}
+          <div className="lista-peliculas">
+            {favoritos.map((pelicula) => (
+              <FichaPelicula key={pelicula.id} pelicula={pelicula} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

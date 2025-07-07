@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import AppRutas from "./AppRutas";
 import { obtenerSeriesSemana } from "./tmdbService";
+import Filtros from "./components/Filtros";
 import PeliculasPage from "./pages/PeliculasPage";
 import ModalListaBusqueda from "./components/ModalListaBusqueda";
 import "./App.css";
@@ -12,9 +13,9 @@ function obtenerPeliculasAleatorias(peliculas, cantidad) {
 }
 
 export default function App() {
-  const [textoBusqueda, cambiarTextoBusqueda] = useState("");
-  const [textoGenero, cambiarTextoGenero] = useState("");
-  const [textoOrden, cambiarTextoOrden] = useState("");
+  const [textoBusqueda, setTextoBusqueda] = useState("");
+  const [textoGenero, setTextoGenero] = useState("");
+  const [textoOrden, setTextoOrden] = useState("");
   const [listaPeliculas, establecerListaPeliculas] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
   const navigate = useNavigate();
@@ -83,44 +84,15 @@ export default function App() {
         </Link>
         <div className="contenedor-botones-top2">
           {(location.pathname === "/" || location.pathname === "/series") && (
-            <>
-              <input
-                id="buscador"
-                type="text"
-                className="botones-genericos"
-                value={textoBusqueda}
-                onChange={(e) => cambiarTextoBusqueda(e.target.value)}
-                placeholder={
-                  location.pathname === "/series"
-                    ? "Buscar series..."
-                    : "Buscar películas..."
-                }
-              />
-
-              <select
-                className="botones-genericos"
-                value={textoGenero}
-                onChange={(e) => cambiarTextoGenero(e.target.value)}
-              >
-                <option value="">Todos</option>
-                <option value="28">Acción</option>
-                <option value="35">Comedia</option>
-                <option value="18">Drama</option>
-                <option value="27">Terror</option>
-                <option value="10749">Romance</option>
-              </select>
-
-              <select
-                className="botones-genericos"
-                value={textoOrden}
-                onChange={(e) => cambiarTextoOrden(e.target.value)}
-              >
-                <option value="">Ordenar por</option>
-                <option value="popular">Más populares</option>
-                <option value="fecha">Fecha de estreno</option>
-                <option value="titulo">Título A-Z</option>
-              </select>
-            </>
+            <Filtros
+              tipo={location.pathname === "/series" ? "series" : "peliculas"}
+              textoBusqueda={textoBusqueda}
+              cambiarTextoBusqueda={setTextoBusqueda}
+              textoGenero={textoGenero}
+              cambiarTextoGenero={setTextoBusqueda}
+              textoOrden={textoOrden}
+              cambiarTextoOrden={setTextoOrden}
+            />
           )}
         </div>
         <div className="contenedor-botones-top">
@@ -194,27 +166,33 @@ export default function App() {
         cerrarModal={() => setMostrarModal(false)}
         lista={listaPeliculas}
         tipo={location.pathname === "/series" ? "series" : "peliculas"}
+        textoBusqueda={textoBusqueda}
+        cambiarTextoBusqueda={setTextoBusqueda}
+        textoGenero={textoGenero}
+        cambiarTextoGenero={setTextoGenero}
+        textoOrden={textoOrden}
+        cambiarTextoOrden={setTextoOrden}
       />
       <main className="app-contenedor app-contenedor2">
         <main className="app-contenedor app-contenedor2">
           {location.pathname === "/" ? (
             <PeliculasPage
               textoBusqueda={textoBusqueda}
-              cambiarTextoBusqueda={cambiarTextoBusqueda}
+              cambiarTextoBusqueda={setTextoBusqueda}
               textoGenero={textoGenero}
-              cambiarTextoGenero={cambiarTextoGenero}
+              cambiarTextoGenero={setTextoGenero}
               textoOrden={textoOrden}
-              cambiarTextoOrden={cambiarTextoOrden}
+              cambiarTextoOrden={setTextoOrden}
               listaPeliculas={listaPeliculas}
             />
           ) : (
             <AppRutas
               textoBusqueda={textoBusqueda}
-              cambiarTextoBusqueda={cambiarTextoBusqueda}
+              cambiarTextoBusqueda={setTextoBusqueda}
               textoGenero={textoGenero}
-              cambiarTextoGenero={cambiarTextoGenero}
+              cambiarTextoGenero={setTextoBusqueda}
               textoOrden={textoOrden}
-              cambiarTextoOrden={cambiarTextoOrden}
+              cambiarTextoOrden={setTextoOrden}
               listaPeliculas={listaPeliculas}
             />
           )}

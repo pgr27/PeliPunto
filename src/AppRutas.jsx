@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import FiltrosPeliculas from "./components/Filtros";
+import Filtros from "./components/Filtros";
 import FichaPelicula from "./components/FichaPelicula";
 import Fav from "./pages/FavPage";
 import PeliculasPage from "./pages/PeliculasPage";
@@ -7,11 +7,11 @@ import SeriesPage from "./pages/SeriesPage";
 
 function AppRutas({
   textoBusqueda,
-  cambiarTextoBusqueda,
+  setTextoBusqueda,
   textoGenero,
-  cambiarTextoGenero,
+  setTextoGenero,
   textoOrden,
-  cambiarTextoOrden,
+  setTextoOrden,
   listaPeliculas,
 }) {
   return (
@@ -20,13 +20,13 @@ function AppRutas({
         path="/"
         element={
           <>
-            <FiltrosPeliculas
+            <Filtros
               textoBusqueda={textoBusqueda}
-              cambiarTextoBusqueda={cambiarTextoBusqueda}
+              cambiarTextoBusqueda={setTextoBusqueda}
               textoGenero={textoGenero}
-              cambiarTextoGenero={cambiarTextoGenero}
+              cambiarTextoGenero={setTextoGenero}
               textoOrden={textoOrden}
-              cambiarTextoOrden={cambiarTextoOrden}
+              cambiarTextoOrden={setTextoOrden}
             />
             <div className="lista-peliculas">
               {listaPeliculas.map((pelicula) => (
