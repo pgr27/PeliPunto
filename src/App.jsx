@@ -78,11 +78,12 @@ export default function App() {
   }, []);
   return (
     <>
-      <header className="top-bar">
+      <header>
         <Link to="/" className="titulo-peli-punto">
           <h1>🎬 PeliPunto</h1>
         </Link>
-        <div className="contenedor-botones-top2">
+
+        <div className="rowfiltros">
           {(location.pathname === "/" || location.pathname === "/series") && (
             <Filtros
               tipo={location.pathname === "/series" ? "series" : "peliculas"}
@@ -94,71 +95,29 @@ export default function App() {
               cambiarTextoOrden={setTextoOrden}
             />
           )}
-        </div>
-        <div className="contenedor-botones-top">
+          {["/", "/peliculas", "/series"].includes(location.pathname) && (
+            <Link to="/favoritos" className="botones-genericos rowfiltros2">
+              ⭐ Favoritos
+            </Link>
+          )}
+
           {location.pathname === "/" && (
-            <>
-              <button
-                onClick={() => navigate("/series")}
-                className="botones-genericos "
-              >
-                Series
-              </button>
-              <Link
-                to="/favoritos"
-                className="botones-genericos solo-escritorio"
-              >
-                ⭐ Favoritos
-              </Link>
-            </>
+            <button
+              onClick={() => navigate("/series")}
+              className="botones-genericos rowfiltros2"
+            >
+              Series
+            </button>
           )}
 
           {location.pathname !== "/" && (
             <button
               onClick={() => navigate("/")}
-              className="botones-genericos "
+              className="botones-genericos rowfiltros2"
             >
               Peliculas
             </button>
           )}
-        </div>
-
-        <div className="dropdown">
-          {/* Menú desplegable para movil */}
-          <div className="dropdown">
-            <button
-              className="btn btn-light dropdown-toggle botones-genericos"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Menú
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              <li className="solo-movil">
-                <Link className="dropdown-item" to="/favoritos">
-                  ⭐ Mis favoritos
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/peliculas-semana">
-                  🎬 Películas de la Semana
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/maratones">
-                  🎞️ Maratones
-                </Link>
-              </li>
-              {location.pathname !== "/" && (
-                <li className="solo-movil">
-                  <Link className="dropdown-item" to="/">
-                    🡰 Página Principal
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </div>
         </div>
       </header>
       <ModalListaBusqueda
@@ -173,8 +132,8 @@ export default function App() {
         textoOrden={textoOrden}
         cambiarTextoOrden={setTextoOrden}
       />
-      <main className="app-contenedor app-contenedor2">
-        <main className="app-contenedor app-contenedor2">
+      <main className="app-contenedor">
+        <main>
           {location.pathname === "/" ? (
             <PeliculasPage
               textoBusqueda={textoBusqueda}

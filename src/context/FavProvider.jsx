@@ -5,28 +5,52 @@ const FavContexto = createContext();
 
 // PROVIDER
 export function FavProvider({ children }) {
-  // estado inicial desde localStorage
-  const [favoritos, setFavoritos] = useState(() => {
-    const guardado = localStorage.getItem("favoritos");
+  const [favoritosPeliculas, setFavoritosPeliculas] = useState(() => {
+    const guardado = localStorage.getItem("favoritosPeliculas");
     return guardado ? JSON.parse(guardado) : [];
   });
 
-  // sincronizar cambios con localStorage
-  useEffect(() => {
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-  }, [favoritos]);
+  const [favoritosSeries, setFavoritosSeries] = useState(() => {
+    const guardado = localStorage.getItem("favoritosSeries");
+    return guardado ? JSON.parse(guardado) : [];
+  });
 
-  // alternar favorito
-  const alternarFavorito = (pelicula) => {
-    setFavoritos((actual) =>
+  useEffect(() => {
+    localStorage.setItem(
+      "favoritosPeliculas",
+      JSON.stringify(favoritosPeliculas)
+    );
+  }, [favoritosPeliculas]);
+
+  useEffect(() => {
+    localStorage.setItem("favoritosSeries", JSON.stringify(favoritosSeries));
+  }, [favoritosSeries]);
+
+  const alternarFavoritoPeliculas = (pelicula) => {
+    setFavoritosPeliculas((actual) =>
       actual.some((p) => p.id === pelicula.id)
         ? actual.filter((p) => p.id !== pelicula.id)
         : [...actual, pelicula]
     );
   };
 
+  const alternarFavoritosSeries = (serie) => {
+    setFavoritosSeries((actual) =>
+      actual.some((s) => s.id === serie.id)
+        ? actual.filter((s) => s.id !== serie.id)
+        : [...actual, serie]
+    );
+  };
+
   return (
-    <FavContexto.Provider value={{ favoritos, alternarFavorito }}>
+    <FavContexto.Provider
+      value={{
+        favoritosPeliculas,
+        favoritosSeries,
+        alternarFavoritoPeliculas,
+        alternarFavoritosSeries,
+      }}
+    >
       {children}
     </FavContexto.Provider>
   );

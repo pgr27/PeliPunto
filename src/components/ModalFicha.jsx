@@ -13,7 +13,7 @@ function ModalFicha({ abierto, onCerrar, contenido, trailerUrl }) {
           ✖
         </button>
 
-        <FichaPelicula pelicula={contenido} />
+        <FichaPelicula item={contenido} />
         {trailerUrl && (
           <div className="ficha-pelicula container text-center">
             {" "}

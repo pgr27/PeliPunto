@@ -4,13 +4,25 @@ import {
   obtenerSeriesPorGenero,
   obtenerTrailerSerie,
 } from "../tmdbService";
+import Popup from "reactjs-popup";
+import FichaPelicula from "../components/FichaPelicula";
+import ModalFicha from "../components/ModalFicha";
+
 import "../App.css";
 
 function SeriesPage() {
   const [seriesSemana, setSeriesSemana] = useState([]);
   const [seriesPorGenero, setSeriesPorGenero] = useState({});
   const [trailers, setTrailers] = useState({});
-
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [contenidoSeleccionado, setContenidoSeleccionado] = useState(null);
+  const [trailerUrl, setTrailerUrl] = useState(null);
+  const manejarClic = async (item) => {
+    setContenidoSeleccionado(item);
+    const url = await obtenerTrailerSerie(item.id);
+    setTrailerUrl(url);
+    setModalAbierto(true);
+  };
   const generos = [
     "accion",
     "animacion",
@@ -50,15 +62,6 @@ function SeriesPage() {
     cargarSeries();
   }, []);
 
-  const manejarClic = (id) => {
-    const url = trailers[id];
-    if (url) {
-      window.open(url, "_blank");
-    } else {
-      alert("Tráiler no disponible 😢");
-    }
-  };
-
   const renderCarrusel = (titulo, lista) => (
     <div className="carrusel-contenedor">
       <h4 className="texto-banners mb-3">{titulo}</h4>
@@ -70,7 +73,7 @@ function SeriesPage() {
             src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`}
             alt={serie.name}
             title="Haz clic para ver el tráiler"
-            onClick={() => manejarClic(serie.id)}
+            onClick={() => manejarClic(serie)}
           />
         ))}
       </div>
@@ -80,7 +83,7 @@ function SeriesPage() {
   return (
     <div>
       <div>
-        <h1 className="titulo-peli-punto mb-4">📺 Series</h1>
+        <h1>📺 Series</h1>
         {renderCarrusel("📅 Recomendaciones de la Semana", seriesSemana)}
         {generos.map((genero) =>
           seriesPorGenero[genero]?.length > 0 ? (
@@ -92,6 +95,12 @@ function SeriesPage() {
             </div>
           ) : null
         )}
+        <ModalFicha
+          abierto={modalAbierto}
+          onCerrar={() => setModalAbierto(false)}
+          contenido={contenidoSeleccionado}
+          trailerUrl={trailerUrl}
+        />
       </div>
     </div>
   );
