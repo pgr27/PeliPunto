@@ -1,5 +1,3 @@
-import React from "react";
-
 function Filtros({
   tipo, // "peliculas" o "series"
   textoBusqueda,
@@ -10,19 +8,19 @@ function Filtros({
   cambiarTextoOrden,
 }) {
   return (
-    <form>
-      <div className="rowfiltros">
-        <input
-          type="text"
-          className="botones-genericos"
-          id="busqueda"
-          value={textoBusqueda}
-          onChange={(e) => cambiarTextoBusqueda(e.target.value)}
-          placeholder={
-            tipo === "peliculas" ? "Buscar película" : "Ej. Stranger Things"
-          }
-        />
+    <div className="rowfiltros">
+      <input
+        type="text"
+        className="botones-genericos"
+        id="busqueda"
+        value={textoBusqueda}
+        onChange={(e) => cambiarTextoBusqueda(e.target.value)}
+        placeholder={
+          tipo === "peliculas" ? "Buscar película..." : "Buscar series..."
+        }
+      />
 
+      {textoGenero !== undefined && cambiarTextoGenero && (
         <select
           id="genero"
           className="botones-genericos"
@@ -36,7 +34,9 @@ function Filtros({
           <option value="27">Terror</option>
           <option value="10749">Romance</option>
         </select>
+      )}
 
+      {textoOrden !== undefined && cambiarTextoOrden && (
         <select
           id="orden"
           className="botones-genericos"
@@ -48,8 +48,8 @@ function Filtros({
           <option value="fecha">Fecha de estreno</option>
           <option value="titulo">Título A-Z</option>
         </select>
-      </div>
-    </form>
+      )}
+    </div>
   );
 }
 

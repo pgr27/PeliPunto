@@ -3,7 +3,7 @@ import "reactjs-popup/dist/index.css";
 import FichaPelicula from "../components/FichaPelicula";
 import "../App.css";
 
-function ModalFicha({ abierto, onCerrar, contenido, trailerUrl }) {
+function ModalFicha({ abierto, onCerrar, contenido, trailerUrl, isPelicula }) {
   if (!contenido) return null;
 
   return (
@@ -13,9 +13,9 @@ function ModalFicha({ abierto, onCerrar, contenido, trailerUrl }) {
           ✖
         </button>
 
-        <FichaPelicula item={contenido} />
+        <FichaPelicula item={contenido} isPelicula={isPelicula} />
         {trailerUrl && (
-          <div className="ficha-pelicula container text-center">
+          <div className="ficha-pelicula ficha-peliculaEspecial container text-center">
             {" "}
             <iframe
               width="100%"

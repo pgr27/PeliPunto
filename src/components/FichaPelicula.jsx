@@ -1,6 +1,8 @@
 import { useFav } from "../context/FavProvider";
 
 export default function FichaPelicula({ item, isPelicula }) {
+  if (!item || !item.id)
+    return <p className="h1">No hay información disponible</p>;
   const {
     alternarFavoritoPeliculas,
     favoritosPeliculas,
@@ -12,13 +14,21 @@ export default function FichaPelicula({ item, isPelicula }) {
   const esSerieFavorita = favoritosSeries.some((s) => s.id === item.id);
 
   const esFavorita = isPelicula ? esPeliculaFavorita : esSerieFavorita;
-  const alternarFavorito = isPelicula
-    ? () => alternarFavoritoPeliculas(item)
-    : () => alternarFavoritosSeries(item);
+  const alternarFavorito = () => {
+    if (isPelicula) {
+      alternarFavoritoPeliculas(item);
+    } else {
+      alternarFavoritosSeries(item);
+    }
+  };
+  const alternTest = () => {
+    console.log("Alternando favorito para:", item);
+    console.log("ISPELICULA:", isPelicula);
+    alternarFavorito();
+  };
 
   return (
     <div className="ficha-pelicula">
-      if (!item || !item.id) return null;
       {item.poster_path && (
         <img
           src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
@@ -35,7 +45,7 @@ export default function FichaPelicula({ item, isPelicula }) {
             : "Desconocido"}
         </p>
         <p>{item.overview || "Sin descripción disponible."}</p>
-        <button className="botones-genericos" onClick={alternarFavorito}>
+        <button className="botones-genericos" onClick={alternTest}>
           {esFavorita ? "❤️ Quitar de favoritos" : "🤍 Añadir a favoritos"}
         </button>
       </div>

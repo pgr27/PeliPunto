@@ -23,6 +23,7 @@ const genreMapSeries = {
   terror: 9648
 };
 
+/*Obtener Pelicuals de la semana*/
 export async function obtenerPeliculasSemana() {
   try {
     const response = await fetch(
@@ -33,53 +34,6 @@ export async function obtenerPeliculasSemana() {
   } catch (error) {
     console.error("Error obteniendo películas de la semana:", error);
     return [];
-  }
-}
-
-export async function obtenerTrailer(movieId) {
-  try {
-    console.log("Buscando trailer para ID:", movieId);
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
-    );
-    const data = await response.json();
-    console.log("Respuesta de la API:", data);
-    const trailer = data.results.find(
-      (video) => video.site === "YouTube" && video.type === "Trailer"
-    );
-    console.log(data.results)
-    console.log("Trailer encontrado:", trailer);
-    return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
-  } catch (error) {
-    console.error("Error obteniendo el trailer:", error);
-    return null;
-  }
-}
-export async function obtenerSeriesSemana() {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/trending/tv/week?api_key=${API_KEY}&language=es-ES`
-    );
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("Error obteniendo series de la semana:", error);
-    return [];
-  }
-}
-export async function obtenerTrailerSerie(serieId) {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/tv/${serieId}/videos?api_key=${API_KEY}`
-    );
-    const data = await response.json();
-    const trailer = data.results.find(
-      (video) => video.site === "YouTube" && video.type === "Trailer"
-    );
-    return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
-  } catch (error) {
-    console.error("Error obteniendo el tráiler de la serie:", error);
-    return null;
   }
 }
 export async function obtenerPeliculasPorGenero(nombreGenero) {
@@ -102,7 +56,38 @@ export async function obtenerPeliculasPorGenero(nombreGenero) {
     return [];
   }
 }
-
+export async function obtenerTrailer(movieId) {
+  try {
+    console.log("Buscando trailer para ID:", movieId);
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    console.log("Respuesta de la API:", data);
+    const trailer = data.results.find(
+      (video) => video.site === "YouTube" && video.type === "Trailer"
+    );
+    console.log(data.results)
+    console.log("Trailer encontrado:", trailer);
+    return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+  } catch (error) {
+    console.error("Error obteniendo el trailer:", error);
+    return null;
+  }
+}
+/*Obtener Series*/
+export async function obtenerSeriesSemana() {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/trending/tv/week?api_key=${API_KEY}&language=es-ES`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Error obteniendo series de la semana:", error);
+    return [];
+  }
+}
 export async function obtenerSeriesPorGenero(nombreGenero) {
   const idGenero = genreMapSeries[nombreGenero.toLowerCase()];
   try {
@@ -121,5 +106,18 @@ export async function obtenerSeriesPorGenero(nombreGenero) {
     return [];
   }
 }
-
-
+export async function obtenerTrailerSerie(serieId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/tv/${serieId}/videos?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    const trailer = data.results.find(
+      (video) => video.site === "YouTube" && video.type === "Trailer"
+    );
+    return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+  } catch (error) {
+    console.error("Error obteniendo el tráiler de la serie:", error);
+    return null;
+  }
+}

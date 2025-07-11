@@ -19,14 +19,6 @@ function GenerosPeliculas({ genero }) {
     }
     cargarPeliculas();
   }, [genero]);
-
-  const alternarVista = (id) => {
-    setVistas((estadoActual) => ({
-      ...estadoActual,
-      [id]: !estadoActual[id],
-    }));
-  };
-
   return (
     <div>
       <h1 className="titulo-peli-punto">

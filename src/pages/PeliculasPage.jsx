@@ -5,10 +5,7 @@ import {
   obtenerTrailer,
 } from "../tmdbService";
 import "../App.css";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import FichaPelicula from "../components/FichaPelicula";
-
 import ModalFicha from "../components/ModalFicha";
 
 function PeliculasPage() {
@@ -69,9 +66,9 @@ function PeliculasPage() {
     <div className="carrusel-contenedor">
       <h4 className="texto-banners mb-3">{titulo}</h4>
       <div className="carrusel-scroll">
-        {lista.map((pelicula) => (
+        {lista.map((pelicula, index) => (
           <img
-            key={pelicula.id}
+            key={pelicula.id || `${pelicula.title}-${index}`}
             className="carrusel-poster"
             src={`https://image.tmdb.org/t/p/w300${pelicula.poster_path}`}
             alt={pelicula.title}
@@ -85,7 +82,7 @@ function PeliculasPage() {
 
   return (
     <div>
-      <h1 className="titulo-peli-punto mb-4">🎬 Películas</h1>
+      <h1>🍿 Películas</h1>
       {renderCarrusel("📅 Recomendaciones de la Semana", peliculasSemana)}
       {generos.map((genero) =>
         peliculasPorGenero[genero]
@@ -100,6 +97,7 @@ function PeliculasPage() {
         onCerrar={() => setModalAbierto(false)}
         contenido={contenidoSeleccionado}
         trailerUrl={trailerUrl}
+        isPelicula={true}
       />
     </div>
   );

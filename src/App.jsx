@@ -7,11 +7,6 @@ import PeliculasPage from "./pages/PeliculasPage";
 import ModalListaBusqueda from "./components/ModalListaBusqueda";
 import "./App.css";
 
-function obtenerPeliculasAleatorias(peliculas, cantidad) {
-  if (!peliculas || peliculas.length === 0) return [];
-  return peliculas.sort(() => Math.random() - 0.5).slice(0, cantidad);
-}
-
 export default function App() {
   const [textoBusqueda, setTextoBusqueda] = useState("");
   const [textoGenero, setTextoGenero] = useState("");
@@ -20,7 +15,7 @@ export default function App() {
   const [mostrarModal, setMostrarModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [seriesSemana, setSeriesSemana] = useState([]);
   useEffect(() => {
     async function cargarBusqueda() {
       if (!textoBusqueda.trim()) {
@@ -83,20 +78,16 @@ export default function App() {
           <h1>🎬 PeliPunto</h1>
         </Link>
 
-        <div className="rowfiltros">
+        <div className="botones-top">
           {(location.pathname === "/" || location.pathname === "/series") && (
             <Filtros
               tipo={location.pathname === "/series" ? "series" : "peliculas"}
               textoBusqueda={textoBusqueda}
               cambiarTextoBusqueda={setTextoBusqueda}
-              textoGenero={textoGenero}
-              cambiarTextoGenero={setTextoBusqueda}
-              textoOrden={textoOrden}
-              cambiarTextoOrden={setTextoOrden}
             />
           )}
           {["/", "/peliculas", "/series"].includes(location.pathname) && (
-            <Link to="/favoritos" className="botones-genericos rowfiltros2">
+            <Link to="/favoritos" className="botones-genericos">
               ⭐ Favoritos
             </Link>
           )}
@@ -104,18 +95,20 @@ export default function App() {
           {location.pathname === "/" && (
             <button
               onClick={() => navigate("/series")}
-              className="botones-genericos rowfiltros2"
+              className="botones-genericos "
             >
               Series
             </button>
           )}
 
-          {location.pathname !== "/" && (
-            <button
-              onClick={() => navigate("/")}
-              className="botones-genericos rowfiltros2"
-            >
+          {location.pathname == "/series" && (
+            <button onClick={() => navigate("/")} className="botones-genericos">
               Peliculas
+            </button>
+          )}
+          {location.pathname == "/favoritos" && (
+            <button onClick={() => navigate("/")} className="botones-genericos">
+              Pagina Principal
             </button>
           )}
         </div>

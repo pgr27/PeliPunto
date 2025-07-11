@@ -4,8 +4,6 @@ import {
   obtenerSeriesPorGenero,
   obtenerTrailerSerie,
 } from "../tmdbService";
-import Popup from "reactjs-popup";
-import FichaPelicula from "../components/FichaPelicula";
 import ModalFicha from "../components/ModalFicha";
 
 import "../App.css";
@@ -100,6 +98,7 @@ function SeriesPage() {
           onCerrar={() => setModalAbierto(false)}
           contenido={contenidoSeleccionado}
           trailerUrl={trailerUrl}
+          isPelicula={false}
         />
       </div>
     </div>

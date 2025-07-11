@@ -1,6 +1,5 @@
 import FichaPelicula from "../components/FichaPelicula";
 import Filtros from "../components/Filtros";
-import { useState } from "react";
 export default function ModalListaBusqueda({
   mostrar,
   cerrarModal,
@@ -40,7 +39,7 @@ export default function ModalListaBusqueda({
         </h2>
         <div className="modal-scroll">
           {lista.map((p) => (
-            <FichaPelicula key={p.id} pelicula={p} />
+            <FichaPelicula key={p.id} item={p} />
           ))}
         </div>
       </div>

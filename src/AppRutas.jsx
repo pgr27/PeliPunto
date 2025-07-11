@@ -30,7 +30,7 @@ function AppRutas({
             />
             <div className="lista-peliculas">
               {listaPeliculas.map((pelicula) => (
-                <FichaPelicula key={pelicula.id} pelicula={pelicula} />
+                <FichaPelicula key={pelicula.id} item={pelicula} />
               ))}
             </div>
           </>

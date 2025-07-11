@@ -16,10 +16,20 @@ body {
   padding: 0;
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden; /* evitar scroll horizontal */
-  background-color: #2e1a1a; /* fondo oscuro general */
+  overflow-y: scroll ! important;
+  overflow-x: hidden;
+  background-color: #260101 !important;
   color: #eee;
-  font-family: Arial, sans-serif; /* o tu fuente preferida */
+  font-family: Arial, sans-serif; 
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #260101 !important;
+  font-family: Arial, sans-serif;
+  color: #eee ! important;
+  overflow-x: hidden;
 }
 
 a {
@@ -31,11 +41,14 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-h1 {
-  font-size: 3.2em;
+h1, h2 {
+ font-size: clamp(1rem, 3vw, 2.5rem); 
+  text-align: center;
   line-height: 1.1;
+  word-break: break-word;
+  margin: 2rem 0;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {

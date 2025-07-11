@@ -9,7 +9,6 @@ export function FavProvider({ children }) {
     const guardado = localStorage.getItem("favoritosPeliculas");
     return guardado ? JSON.parse(guardado) : [];
   });
-
   const [favoritosSeries, setFavoritosSeries] = useState(() => {
     const guardado = localStorage.getItem("favoritosSeries");
     return guardado ? JSON.parse(guardado) : [];
@@ -27,6 +26,8 @@ export function FavProvider({ children }) {
   }, [favoritosSeries]);
 
   const alternarFavoritoPeliculas = (pelicula) => {
+    console.log("Alternando favorito para película:", pelicula);
+    console.log("Todas las películas favoritas:", favoritosPeliculas);
     setFavoritosPeliculas((actual) =>
       actual.some((p) => p.id === pelicula.id)
         ? actual.filter((p) => p.id !== pelicula.id)
