@@ -10,7 +10,7 @@ export default function Fav() {
   if (noHayFavoritos) {
     return (
       <div>
-        <p className="h1">No tienes películas ni series en favoritos.</p>
+        <h1>No tienes películas ni series en favoritos.</h1>
       </div>
     );
   }
