@@ -1,12 +1,45 @@
-# React + Vite
+# 🎬 PeliPunto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PeliPunto** es una aplicación web para cinéfilos, desarrollada con **React** y empaquetada con **Vite**. Permite explorar películas y series, visualizarlas fácilmente y guardarlas en favoritos para ver más tarde.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades principales
 
-## Expanding the ESLint configuration
+- Buscar películas y series por título.
+- Ordenar resultados por diferentes criterios.
+- Ver tráilers y descripciones directamente desde la app.
+- Añadir contenido a favoritos y gestionarlo cómodamente.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Tecnologías utilizadas
+
+- React
+- Vite
+- Visual Studio Code
+- The Movie Database API (TMDb)
+
+---
+
+## 🛠️ Cómo ejecutar el proyecto
+
+- Clona el repositorio: ```git clone https://github.com/pgr27/PeliPunto.git cd PeliPunto```
+- Instala las dependencias: ```npm install```
+- Ejecuta la app en modo desarrollo: ```npm run dev```
+- Abre tu navegador en http://localhost:5173
+  
+---
+
+## 🔐 Variables de entorno
+Para que la aplicación funcione correctamente, necesitas una clave de acceso a la API de TMDb.
+Crea un archivo llamado _.env_ en la raíz del proyecto y añade lo siguiente: ```VITE_TMDB_API_KEY=b2e9f694bd4287322bafa9e93ec76931```
+
+---
+
+## 🌍 Aplicación desplegada
+Puedes acceder a la versión en línea de la aplicación en el siguiente enlace: https://peli-punto.netlify.app/
+
+---
+
+## 👩‍💻 Autora: Patricia Guerra
