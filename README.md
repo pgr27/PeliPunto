@@ -33,7 +33,6 @@
 
 ## 🔐 Variables de entorno
 Para que la aplicación funcione correctamente, necesitas una clave de acceso a la API de TMDb.
-Crea un archivo llamado _.env_ en la raíz del proyecto y añade lo siguiente: ```VITE_TMDB_API_KEY=b2e9f694bd4287322bafa9e93ec76931```
 
 ---
 
