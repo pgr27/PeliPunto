@@ -1,3 +1,5 @@
+import customLog from "./utils/Logger";
+
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -23,7 +25,7 @@ const genreMapSeries = {
   terror: 9648
 };
 
-/*Obtener Pelicuals de la semana*/
+/*Obtener Peliculas: por semana, por genero y trailers*/
 export async function obtenerPeliculasSemana() {
   try {
     const response = await fetch(
@@ -48,7 +50,7 @@ export async function obtenerPeliculasPorGenero(nombreGenero) {
       `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${idGenero}&language=es-ES&sort_by=popularity.desc`
     );
     const data = await response.json();
-        console.log("Películas obtenidas en ObtenerPeliculasPorGenero:", data.results);
+        customLog("Películas obtenidas en ObtenerPeliculasPorGenero:", data.results);
 
     return data.results || [];
   } catch (error) {
@@ -58,24 +60,25 @@ export async function obtenerPeliculasPorGenero(nombreGenero) {
 }
 export async function obtenerTrailer(movieId) {
   try {
-    console.log("Buscando trailer para ID:", movieId);
+    customLog("Buscando trailer para ID:", movieId);
     const response = await fetch(
       `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
     );
     const data = await response.json();
-    console.log("Respuesta de la API:", data);
+    customLog("Respuesta de la API:", data);
     const trailer = data.results.find(
       (video) => video.site === "YouTube" && video.type === "Trailer"
     );
-    console.log(data.results)
-    console.log("Trailer encontrado:", trailer);
+    customLog(data.results)
+    customLog("Trailer encontrado:", trailer);
     return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
   } catch (error) {
     console.error("Error obteniendo el trailer:", error);
     return null;
   }
 }
-/*Obtener Series*/
+/*Obtener Series: por semana, por genero y trailers*/
+
 export async function obtenerSeriesSemana() {
   try {
     const response = await fetch(
@@ -99,7 +102,7 @@ export async function obtenerSeriesPorGenero(nombreGenero) {
       `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=${idGenero}&language=es-ES&sort_by=popularity.desc`
     );
     const data = await response.json();
-    console.log(`Series obtenidas para ${nombreGenero}:`, data.results);
+    customLog(`Series obtenidas para ${nombreGenero}:`, data.results);
     return data.results || [];
   } catch (error) {
     console.error("Error obteniendo series por género:", error);

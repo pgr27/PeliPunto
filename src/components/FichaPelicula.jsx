@@ -1,4 +1,5 @@
 import { useFav } from "../context/FavProvider";
+import customLog from "../utils/Logger";
 
 export default function FichaPelicula({ item, isPelicula }) {
   if (!item || !item.id)
@@ -22,8 +23,8 @@ export default function FichaPelicula({ item, isPelicula }) {
     }
   };
   const alternTest = () => {
-    console.log("Alternando favorito para:", item);
-    console.log("ISPELICULA:", isPelicula);
+    customLog("Alternando favorito para:", item);
+    customLog("ISPELICULA:", isPelicula);
     alternarFavorito();
   };
 

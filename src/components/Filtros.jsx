@@ -1,5 +1,5 @@
 function Filtros({
-  tipo, // "peliculas" o "series"
+  tipo, // peliculas o series
   textoBusqueda,
   cambiarTextoBusqueda,
   textoGenero,
@@ -19,7 +19,6 @@ function Filtros({
           tipo === "peliculas" ? "Buscar película..." : "Buscar series..."
         }
       />
-
       {textoGenero !== undefined && cambiarTextoGenero && (
         <select
           id="genero"
@@ -35,7 +34,6 @@ function Filtros({
           <option value="10749">Romance</option>
         </select>
       )}
-
       {textoOrden !== undefined && cambiarTextoOrden && (
         <select
           id="orden"

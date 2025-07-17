@@ -2,7 +2,7 @@ import { useFav } from "../context/FavProvider";
 import FichaPelicula from "../components/FichaPelicula";
 
 export default function Fav() {
-  const { favoritosPeliculas, favoritosSeries } = useFav(); // ← ¡ahora sí ambas!
+  const { favoritosPeliculas, favoritosSeries } = useFav();
 
   const noHayFavoritos =
     favoritosPeliculas.length === 0 && favoritosSeries.length === 0;

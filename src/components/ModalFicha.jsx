@@ -5,14 +5,12 @@ import "../App.css";
 
 function ModalFicha({ abierto, onCerrar, contenido, trailerUrl, isPelicula }) {
   if (!contenido) return null;
-
   return (
     <Popup open={abierto} onClose={onCerrar} modal nested>
       <div className="modal-contenido">
         <button className="modal-cerrar" onClick={onCerrar}>
           ✖
         </button>
-
         <FichaPelicula item={contenido} isPelicula={isPelicula} />
         {trailerUrl && (
           <div className="ficha-pelicula ficha-peliculaEspecial container text-center">

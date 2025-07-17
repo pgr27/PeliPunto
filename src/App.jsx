@@ -16,13 +16,13 @@ export default function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [seriesSemana, setSeriesSemana] = useState([]);
+
   useEffect(() => {
     async function cargarBusqueda() {
       if (!textoBusqueda.trim()) {
         establecerListaPeliculas([]);
         return;
       }
-
       const tipo = location.pathname === "/series" ? "tv" : "movie";
       const res = await fetch(
         `https://api.themoviedb.org/3/search/${tipo}?api_key=${
@@ -31,8 +31,6 @@ export default function App() {
       );
       const data = await res.json();
       let filtradas = data.results;
-
-      // Género y orden igual que antes
       if (textoGenero)
         filtradas = filtradas.filter((p) =>
           p.genre_ids.includes(Number(textoGenero))
@@ -52,9 +50,9 @@ export default function App() {
 
       establecerListaPeliculas(filtradas);
     }
-
     cargarBusqueda();
   }, [textoBusqueda, textoGenero, textoOrden, location.pathname]);
+
   useEffect(() => {
     const esRutaValida =
       location.pathname === "/" || location.pathname === "/series";
@@ -77,7 +75,6 @@ export default function App() {
         <Link to="/" className="titulo-peli-punto">
           <h1>🎬 PeliPunto</h1>
         </Link>
-
         <div className="botones-top">
           {(location.pathname === "/" || location.pathname === "/series") && (
             <Filtros

@@ -173,8 +173,8 @@
 }
 .modal-cerrar {
   position: absolute;
-  top: 0.75rem;
-  right: 1rem;
+  top: 1,5rem;
+  right: 1.5rem;
   font-size: 1.5rem;
   background: transparent;
   border: none;
@@ -230,4 +230,10 @@
 .popup-content{
   width: 80% !important;
 }  
+.modal-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  
+}
 }

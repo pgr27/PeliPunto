@@ -1,5 +1,6 @@
 import FichaPelicula from "../components/FichaPelicula";
 import Filtros from "../components/Filtros";
+
 export default function ModalListaBusqueda({
   mostrar,
   cerrarModal,
@@ -13,7 +14,6 @@ export default function ModalListaBusqueda({
   cambiarTextoOrden,
 }) {
   if (!mostrar) return null;
-
   return (
     <div className="modal-overlay">
       <div className="modal-contenido">
@@ -30,7 +30,6 @@ export default function ModalListaBusqueda({
             />
           )}
         </div>
-
         <button className="modal-cerrar" onClick={cerrarModal}>
           ✖
         </button>

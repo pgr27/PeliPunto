@@ -17,7 +17,7 @@ function PeliculasPage() {
   const [trailerUrl, setTrailerUrl] = useState(null);
   const manejarClic = async (item) => {
     setContenidoSeleccionado(item);
-    const url = await obtenerTrailer(item.id); // usa tu función ya existente
+    const url = await obtenerTrailer(item.id);
     setTrailerUrl(url);
     setModalAbierto(true);
   };
@@ -36,10 +36,9 @@ function PeliculasPage() {
   useEffect(() => {
     async function cargarPeliculas() {
       const semana = await obtenerPeliculasSemana();
-      setPeliculasSemana(semana.slice(0, 8));
-
       const nuevosGeneros = {};
       const nuevosTrailers = {};
+      setPeliculasSemana(semana.slice(0, 8));
 
       for (let genero of generos) {
         const peliculas = await obtenerPeliculasPorGenero(genero);
@@ -79,7 +78,6 @@ function PeliculasPage() {
       </div>
     </div>
   );
-
   return (
     <div>
       <h1>🍿 Películas</h1>

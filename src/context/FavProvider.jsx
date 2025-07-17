@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import customLog from "../utils/Logger";
 
-// CONTEXTO
 const FavContexto = createContext();
 
-// PROVIDER
+// Provider
 export function FavProvider({ children }) {
   const [favoritosPeliculas, setFavoritosPeliculas] = useState(() => {
     const guardado = localStorage.getItem("favoritosPeliculas");
@@ -26,8 +26,8 @@ export function FavProvider({ children }) {
   }, [favoritosSeries]);
 
   const alternarFavoritoPeliculas = (pelicula) => {
-    console.log("Alternando favorito para película:", pelicula);
-    console.log("Todas las películas favoritas:", favoritosPeliculas);
+    customLog("Alternando favorito para película:", pelicula);
+    customLog("Todas las películas favoritas:", favoritosPeliculas);
     setFavoritosPeliculas((actual) =>
       actual.some((p) => p.id === pelicula.id)
         ? actual.filter((p) => p.id !== pelicula.id)
@@ -42,7 +42,6 @@ export function FavProvider({ children }) {
         : [...actual, serie]
     );
   };
-
   return (
     <FavContexto.Provider
       value={{
@@ -56,8 +55,6 @@ export function FavProvider({ children }) {
     </FavContexto.Provider>
   );
 }
-
-// Hook para usar en componentes
 export function useFav() {
   return useContext(FavContexto);
 }
